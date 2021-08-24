@@ -50,6 +50,33 @@
 <link rel="stylesheet" href="https://www.isaiminiweb.site/assets/css/isai.css">
 </head>
 <body>
+	
+	
+	
+<div itemscope itemtype="https://schema.org/ItemList">
+	
+	{% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
+	    
+                    {% for post in posts %}
+                        {% if post.genre == page.slug %}
+  <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <meta itemprop="url" content="{{ post.url }}"/>
+    <meta itemprop="name" content="{{ post.title }}"/>
+    <meta itemprop="position" content="{{ crumbs_total | plus:1 }}" />
+  </div>
+  
+   {% endif %}
+                    {% endfor %}
+  
+  </div>
+	
+	
+	
+	
+	
+	
+	
+	
 
 <div class="line">
 <font size="4px">{{ site.name }}</font>
@@ -68,9 +95,9 @@ Follow our <a href="https://telegram.im/@isaiminidownload?lang=en"><font color="
                     {% for post in posts %}
                         {% if post.genre == page.slug %}
 
-<div class="f" title="{{ post.title }} ({{ post.year }})"> <img src="/dir.gif" alt="{{ post.title }} Movies Download"> <a href="{{ post.url }}">{{ post.title }} ({{ post.year }})</a></div>
-
-
+<div class="f" title="{{ post.title }} ({{ post.year }})">
+	<img src="/dir.gif" alt="{{ post.title }} Movies Download">
+	<a href="{{ post.url }}">{{ post.title }} ({{ post.year }})</a></div>
  {% endif %}
                     {% endfor %}
 
