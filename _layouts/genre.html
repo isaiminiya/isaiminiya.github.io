@@ -56,13 +56,13 @@
 <div itemscope itemtype="https://schema.org/ItemList">
 	
 	{% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
-	    
+	{% for crumb in crumbs offset: 1 %}
                     {% for post in posts %}
                         {% if post.genre == page.slug %}
   <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
     <meta itemprop="url" content="{{ post.url }}"/>
     <meta itemprop="name" content="{{ post.title }}"/>
-    <meta itemprop="position" content="{{ crumbs_total | plus:1 }}" />
+    <meta itemprop="position" content="{{ forloop.index | plus: 1 }}" />
   </div>
   
    {% endif %}
