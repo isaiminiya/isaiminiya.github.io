@@ -56,16 +56,18 @@
 <div itemscope itemtype="https://schema.org/ItemList">
 	
 	{% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
-	{% assign crumbs = page.url | remove: '/index.html' | split: '/' %}
+	{% assign crumbs = page.url | split: '/' %}
+	{% assign i = 1 %}
 	{% for crumb in crumbs offset: 1 %}
+	{% if forloop.first %}
                     {% for post in posts %}
                         {% if post.genre == page.slug %}
   <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
     <meta itemprop="url" content="{{ post.url }}"/>
     <meta itemprop="name" content="{{ post.title }}"/>
-    <meta itemprop="position" content="{{ forloop.index | plus: 1 }}" />
+    <meta itemprop="position" content="{{ i }}" />
   </div>
-  
+  {% endif %}
    {% endif %}
                     {% endfor %}
 	{% endfor %}
