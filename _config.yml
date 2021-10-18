@@ -4,6 +4,7 @@ medium_username: medium_username
 plugins:
   - jekyll-paginate
   - jekyll-paginate-content
+  - jekyll-archives
 highlighter: rouge
 twitter_username: twitter_username
 use_logo: false
@@ -125,3 +126,11 @@ menu2:
     url: https://ijayasurya.github.io/tamilrockers-2020-movies.html
   - title:  IsaiDub Dubbed Movies
     url: https://ijayasurya.github.io/isaidub-download.html
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
